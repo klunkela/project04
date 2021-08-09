@@ -1,0 +1,111 @@
+{
+  "heroName": {
+    "name": "123afdasd 1123asd"
+  },
+  "users": [
+    {
+      "id": 1,
+      "login": "1",
+      "password": "11",
+      "email": "1@m.r",
+      "avatar": "https://www.turtlepower.ru/attachment.php?attachmentid=5319&stc=1&d=1251310932",
+      "heroes": [
+        {
+          "id": 1,
+          "name": "Leanne Graham",
+          "avatar": "https://www.turtlepower.ru/attachment.php?attachmentid=5319&stc=1&d=1251310932",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0,
+          "hp": 0,
+          "evasion": 0,
+          "energy": 0,
+          "damage": 0,
+          "stealth": 0,
+          "archery": 0,
+          "educability": 0,
+          "survival": 0,
+          "medicine": 0,
+          "intimidation": 0,
+          "insight": 0,
+          "appearance": 0,
+          "manipulation": 0
+        },
+        {
+          "id": 2,
+          "name": "user22",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0,
+          "hp": 0,
+          "evasion": 0,
+          "energy": 0,
+          "damage": 0,
+          "stealth": 0,
+          "archery": 0,
+          "educability": 0,
+          "survival": 0,
+          "medicine": 0,
+          "intimidation": 0,
+          "insight": 0,
+          "appearance": 0,
+          "manipulation": 0
+        }
+      ],
+      "heroesCount": 2
+    },
+    {
+      "id": 2,
+      "login": "2",
+      "password": "22",
+      "email": "2@m.r",
+      "heroes": [
+        {
+          "id": 1,
+          "name": "Leanne Graham",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0,
+          "hp": 0,
+          "evasion": 0,
+          "energy": 0,
+          "damage": 0,
+          "stealth": 0,
+          "archery": 0,
+          "educability": 0,
+          "survival": 0,
+          "medicine": 0,
+          "intimidation": 0,
+          "insight": 0,
+          "appearance": 0,
+          "manipulation": 0
+        },
+        {
+          "id": 2,
+          "name": "user22",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0,
+          "hp": 0,
+          "evasion": 0,
+          "energy": 0,
+          "damage": 0,
+          "stealth": 0,
+          "archery": 0,
+          "educability": 0,
+          "survival": 0,
+          "medicine": 0,
+          "intimidation": 0,
+          "insight": 0,
+          "appearance": 0,
+          "manipulation": 0
+        }
+      ],
+      "heroesCount": 2
+    }
+  ]
+}

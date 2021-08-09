@@ -1,7 +1,39 @@
 import React from "react";
+import Preloader from "../Preloader/Preloader";
+import {useDispatch, useSelector} from "react-redux";
+import {getUserData_} from "../../redux/auth_selectors";
+import {logout} from "../../redux/auth_reducer";
 
 let Content = (props) => {
-    return <br/>
+    let userData = useSelector(getUserData_)
+    const dispatch = useDispatch()
+    let logout_ = () => {
+        dispatch(logout())
+    }
+
+    return <div>
+        cnt
+
+        <button onClick={() => logout_()}>LOGOUT</button>
+        {
+            userData.email &&
+            <div>
+                {userData.avatar}
+                <br/>
+                {userData.email}
+                <br/>
+                {userData.login}
+                <br/>
+                {userData.password}
+                <br/>
+                {userData.id}
+            </div>
+        }
+        {
+            !userData.email &&
+            <Preloader/>
+        }
+    </div>
 }
 
 export default Content;

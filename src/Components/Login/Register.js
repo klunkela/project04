@@ -1,8 +1,10 @@
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
-import {api, loginAPI} from "../../api/api";
+import {loginAPI} from "../../api/api";
 import {React, useEffect, useState} from "react";
 import s from './Register.module.css';
+import {regUser} from "../../redux/auth_reducer";
+import {useDispatch} from "react-redux";
 
 function Register(props) {
     let [logins, setLogins] = useState([])
@@ -10,9 +12,9 @@ function Register(props) {
         loginAPI.getLogins(setLogins)
     }, []);
 
-
+    let dispatch = useDispatch()
     let onSubmit = (fields) => {
-        loginAPI.reg(fields.login, fields.password, fields.email, props.setIsAuth, props.setId, props.setIsJustRegistered)
+        dispatch(regUser(fields.login, fields.password, fields.email))
     }
     return (
         <Formik

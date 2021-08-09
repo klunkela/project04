@@ -1,36 +1,13 @@
 import axios from "axios";
 
 let instance = axios.create({
-    baseURL: 'http://localhost:3000/'
+    withCredentials: true,
+    baseURL: 'http://localhost:3001/'
 })
 
 export const userAPI = {
-    getLogin(id) {
-
-
-        return instance.get('users/' + id).catch(err => {
-            // what now?
-            //console.log(err);
-        })
-
-    }
-}
-export const api = {
-    getName() {
-        return instance.get('heroName')
-    },
-    setName(name) {
-        return instance.put('heroName', {name})
-    }
-}
-
-
-export const heroesAPI = {
-    getHeroes(id) {
-        return instance.get('users/'+id)
-    },
-    setName(name) {
-        return instance.put('heroName', {name})
+    getLogin(userId) {
+        return instance.get('users/' + userId)
     }
 }
 
@@ -52,27 +29,23 @@ let basicHeroes = [
         "charisma": 0
     }
 ]
+
 export const loginAPI = {
-    check(login, password, setIsAuth, setId) {
-        instance.get('users').then(response => {
+    checkUserInDB(login, password) {
+        return instance.get('users').then(response => {
                 let pos = response.data.map(e => e.login).indexOf(login)
                 let res = response.data.map(e => e.password)[pos] === password
-                let id = response.data.map(e => e.id)[pos]
+                let userId = response.data.map(e => e.id)[pos]
                 if (res) {
-                    setId(id)
-                    setIsAuth(response.data.map(e => e.password)[pos] === password)
-                } else {
-
+                    return userId
                 }
+                return -1
             }
         )
     },
-    reg(login, password, email, setIsAuth, setId, setIsJustRegistered) {
+    regUser(login, password, email) {
         let id = randomInteger(3, 100000000);
-        instance.post('users', {id, login, password, email, heroes: basicHeroes})
-        setId(id)
-        setIsJustRegistered(true)
-        setIsAuth(true)
+        return instance.post('users', {id, login, password, email, heroes: basicHeroes})
     },
     getLogins(setLogins) {
         instance.get('users').then(response => {

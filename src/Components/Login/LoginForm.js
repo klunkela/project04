@@ -1,9 +1,15 @@
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
-import {loginAPI} from "../../api/api";
-import {React} from "react";
+import React from "react";
+import {setIsAuth} from "../../redux/auth_reducer";
+import {useDispatch} from "react-redux";
 
-function LoginForm(props) {
+function LoginForm() {
+    const dispatch = useDispatch()
+    let onSubmit = (fields) => {
+        dispatch(setIsAuth(fields.login, fields.password))
+    }
+
     return (
         <Formik
             initialValues={{
@@ -18,7 +24,7 @@ function LoginForm(props) {
                     .required('Password is required')
             })}
             onSubmit={fields => {
-                loginAPI.check(fields.login, fields.password, props.setIsAuth, props.setId)
+                onSubmit(fields)
             }}
             render={({errors, status, touched}) => (
                 <Form>

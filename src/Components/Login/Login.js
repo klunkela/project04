@@ -1,25 +1,25 @@
-import {React, useState} from "react";
+import {useState} from "react";
+import React from "react";
 import LoginForm from "./LoginForm";
 import Register from "./Register";
 import ReactModal from 'react-modal';
 import s from './Login.module.css';
+
 function Login(props) {
     let [isNewAcc, setIsNewAcc] = useState(false)
 
-    let handleCloseModal = () => {
+    let closeModal = () => {
         setIsNewAcc(false)
     };
     return (
         <div>
             <button onClick={() => setIsNewAcc(true)}>Create new account</button>
-            <LoginForm setIsAuth={props.setIsAuth} setId={props.setId}/>
+            <LoginForm/>
 
-            {
-                isNewAcc &&
-                <ReactModal ariaHideApp={false} isOpen={true} onRequestClose={handleCloseModal}>
-                    <Register setIsAuth={props.setIsAuth} setId={props.setId} setIsJustRegistered={props.setIsJustRegistered}/>
-                </ReactModal>
-            }
+            <ReactModal ariaHideApp={false} isOpen={isNewAcc} onRequestClose={closeModal}>
+                <Register/>
+            </ReactModal>
+
 
         </div>
     )

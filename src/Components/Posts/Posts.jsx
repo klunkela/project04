@@ -1,20 +1,38 @@
 import React from 'react';
-import Post from './Post/Post';
 import {Field, Form, Formik} from "formik";
+import {useDispatch, useSelector} from "react-redux";
+import {getPosts} from "../../redux/profile_selectors";
+import {addPost} from "../../redux/profile_reducer";
 
-const Posts = (props) => {
+const Posts = () => {
+    const posts = useSelector(getPosts)
+
+    const dispatch = useDispatch()
+    const addPost_ = (post) => {
+        dispatch(addPost(post))
+    }
+
+    console.log(dispatch);
     return (
         <div>
             <div>My Posts</div>
 
-            <PostsForm addPost={props.addPost}/>
+            <PostsForm addPost={addPost_}/>
 
-            {props.posts.map(
+            {posts.map(
                 e => <Post msg={e.post}/>
             )}
         </div>
     )
 }
+const Post = (props) => {
+    return (
+        <div>
+            <div>{props.msg}</div>
+        </div>
+    )
+}
+
 const PostsForm = (props) => {
     return (
         <div>
@@ -22,9 +40,7 @@ const PostsForm = (props) => {
                 initialValues={{
                     message: '',
                 }}
-                onSubmit={
-                    async (values) => {
-                        await new Promise((r) => setTimeout(r, 500));
+                onSubmit={values => {
                         props.addPost(values.post);
                     }}
             >

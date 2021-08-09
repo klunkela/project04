@@ -1,11 +1,15 @@
-import {authAPI} from "../api/api";
+import {loginAPI, userAPI} from "../api/api";
 
 const SET_USER_AUTH_DATA = 'SET_USER_AUTH_DATA'
 
 let initialState = {
-    userId: null,
-    email: null,
+    id: null,
     login: null,
+    password: null,
+    email: null,
+    avatar: null,
+    heroes: null,
+    heroesCount: 0,
     isAuth: false
 }
 
@@ -14,30 +18,92 @@ const auth_reducer = (state = initialState, action) => {
         case SET_USER_AUTH_DATA: {
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.data
             }
         }
-
         default: {
             return state;
         }
     }
 }
 
-export let setUserAuthData = (email, userId, login) => {
-    return {type: SET_USER_AUTH_DATA, data: {email, userId, login}}
+export let setIsAuth_ = (id, login, password, email, avatar, heroes, heroesCount, isAuth) => {
+    if (isAuth) {
+        setCookie('login', login, {secure: true, 'max-age': 3600})
+        setCookie('password', password, {secure: true, 'max-age': 3600})
+    } else {
+        deleteCookie('login')
+        deleteCookie('password')
+    }
+    return {type: SET_USER_AUTH_DATA, data: {id, login, password, email, avatar, heroes, heroesCount, isAuth}}
 }
-export const getUserAuthData = () => {
+export const setIsAuth = (login, password) => {
     return (dispatch) => {
-        authAPI.me()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    let {email, id, login} = response.data.data
-                    dispatch(setUserAuthData(email, id, login));
-                }
-            });
+        loginAPI.checkUserInDB(login, password).then(id => {
+            if (id > 0) {
+                userAPI.getLogin(id).then(res => {
+                    let email = res.data.email
+                    let avatar = res.data.avatar
+                    let heroes = res.data.heroes
+                    let heroesCount = res.data.heroesCount
+                    dispatch(setIsAuth_(id, login, password, email, avatar, heroes, heroesCount, true))
+                })
+
+            }
+        })
     }
 }
+
+export const regUser = (login, password, email) => {
+    return (dispatch) => {
+        loginAPI.regUser(login, password, email).then(res => {
+                if (res.status === 201) {
+                    dispatch(setIsAuth_(res.data.id, login, password, email,
+                        '', {}, '', true))
+                }
+            }
+        )
+    }
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        dispatch(setIsAuth_(null, null, null, null,
+            null, null, null, false))
+
+    }
+}
+
+function deleteCookie(name) {
+    setCookie(name, "", {
+        'max-age': -1
+    })
+}
+
+function setCookie(name, value, options = {}) {
+
+    options = {
+        path: '/',
+        // при необходимости добавьте другие значения по умолчанию
+        ...options
+    };
+
+    if (options.expires instanceof Date) {
+        options.expires = options.expires.toUTCString();
+    }
+
+    let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+    for (let optionKey in options) {
+        updatedCookie += "; " + optionKey;
+        let optionValue = options[optionKey];
+        if (optionValue !== true) {
+            updatedCookie += "=" + optionValue;
+        }
+    }
+
+    document.cookie = updatedCookie;
+}
+
 
 export default auth_reducer

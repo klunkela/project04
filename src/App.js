@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {isAuth_} from "./redux/auth_selectors";
+import Login from "./Components/Login/Login";
+import Content from "./Components/Login/Content";
+import {Redirect, Route} from "react-router-dom";
+import {setIsAuth} from "./redux/auth_reducer";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
+function App() {
+    const isAuth = useSelector(isAuth_)
+    let login = getCookie("login")
+    let password = getCookie("password")
+    const dispatch = useDispatch()
+    dispatch(setIsAuth(login, password))
+    return (
+        <div>
+
+            {
+                isAuth ?
+                    <div>
+                        <Content/>
+                        <Redirect to={'/'}/>
+                    </div> :
+                    <Redirect to={'/login'}/>
+            }
+
+            <Route path="/login" render={() => <Login/>}/>
+
+        </div>
+    );
+}
+
+/*
+{
+    isJustRegistered && <AfterRegisterPage id={id} setIsJustRegistered={setIsJustRegistered}/>
+}
+{
+    isAuth_ && !isJustRegistered && <Content id={id}/>
+}
+{
+    !isAuth_ && <Login setIsJustRegistered={setIsJustRegistered}/>
+}
+*/
 export default App;
