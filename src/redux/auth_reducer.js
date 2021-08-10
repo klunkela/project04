@@ -1,4 +1,4 @@
-import {loginAPI, userAPI} from "../api/api";
+import {loginAPI, usersAPI} from "../api/api";
 
 const SET_USER_AUTH_DATA = 'SET_USER_AUTH_DATA'
 
@@ -9,7 +9,7 @@ let initialState = {
     email: null,
     avatar: null,
     heroes: null,
-    heroesCount: 0,
+    heroesCount: null,
     isAuth: false
 }
 
@@ -37,11 +37,12 @@ export let setIsAuth_ = (id, login, password, email, avatar, heroes, heroesCount
     }
     return {type: SET_USER_AUTH_DATA, data: {id, login, password, email, avatar, heroes, heroesCount, isAuth}}
 }
+
 export const setIsAuth = (login, password) => {
     return (dispatch) => {
         loginAPI.checkUserInDB(login, password).then(id => {
             if (id > 0) {
-                userAPI.getLogin(id).then(res => {
+                usersAPI.getUserData(id).then(res => {
                     let email = res.data.email
                     let avatar = res.data.avatar
                     let heroes = res.data.heroes
@@ -104,6 +105,5 @@ function setCookie(name, value, options = {}) {
 
     document.cookie = updatedCookie;
 }
-
 
 export default auth_reducer

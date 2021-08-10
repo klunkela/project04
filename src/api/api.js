@@ -5,10 +5,20 @@ let instance = axios.create({
     baseURL: 'http://localhost:3001/'
 })
 
-export const userAPI = {
-    getLogin(userId) {
+export const usersAPI = {
+    getUserData(userId) {
         return instance.get('users/' + userId)
+    },
+    getUsers(page, limit) {
+        return instance.get('users?_page=' + page + '&_limit=' + limit)
+    },
+    getUsersCount() {
+        return instance.get('usersCount')
+    },
+    getPages() {
+        return instance.get('usersCount')
     }
+
 }
 
 let basicHeroes = [

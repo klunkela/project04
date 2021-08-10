@@ -106,6 +106,225 @@
         }
       ],
       "heroesCount": 2
+    },
+    {
+      "id": 89595509,
+      "login": "13",
+      "password": "13",
+      "email": "klunk@inbox.ru",
+      "heroes": [
+        {
+          "id": 1,
+          "name": "Leanne Graham",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        },
+        {
+          "id": 2,
+          "name": "user22",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        }
+      ]
+    },
+    {
+      "id": 79297720,
+      "login": "33",
+      "password": "33",
+      "email": "klunk@inbox.ru",
+      "heroes": [
+        {
+          "id": 1,
+          "name": "Leanne Graham",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        },
+        {
+          "id": 2,
+          "name": "user22",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        }
+      ]
+    },
+    {
+      "id": 78431831,
+      "login": "44",
+      "password": "44",
+      "email": "klunk@inbox.ru",
+      "heroes": [
+        {
+          "id": 1,
+          "name": "Leanne Graham",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        },
+        {
+          "id": 2,
+          "name": "user22",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        }
+      ]
+    },
+    {
+      "id": 35106419,
+      "login": "55",
+      "password": "55",
+      "email": "klunk@inbox.ru",
+      "heroes": [
+        {
+          "id": 1,
+          "name": "Leanne Graham",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        },
+        {
+          "id": 2,
+          "name": "user22",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        }
+      ]
+    },
+    {
+      "id": 65847580,
+      "login": "66",
+      "password": "66",
+      "email": "klunk@inbox.ru",
+      "heroes": [
+        {
+          "id": 1,
+          "name": "Leanne Graham",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        },
+        {
+          "id": 2,
+          "name": "user22",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        }
+      ]
+    },
+    {
+      "id": 11631143,
+      "login": "77",
+      "password": "77",
+      "email": "klunk@inbox.ru",
+      "heroes": [
+        {
+          "id": 1,
+          "name": "Leanne Graham",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        },
+        {
+          "id": 2,
+          "name": "user22",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        }
+      ]
+    },
+    {
+      "id": 92719632,
+      "login": "88",
+      "password": "88",
+      "email": "klunk@inbox.ru",
+      "heroes": [
+        {
+          "id": 1,
+          "name": "Leanne Graham",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        },
+        {
+          "id": 2,
+          "name": "user22",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        }
+      ]
+    },
+    {
+      "id": 63936732,
+      "login": "99",
+      "password": "99",
+      "email": "klunk@inbox.ru",
+      "heroes": [
+        {
+          "id": 1,
+          "name": "Leanne Graham",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        },
+        {
+          "id": 2,
+          "name": "user22",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        }
+      ]
+    },
+    {
+      "id": 94909499,
+      "login": "131",
+      "password": "131",
+      "email": "klunk@inbox.ru",
+      "heroes": [
+        {
+          "id": 1,
+          "name": "Leanne Graham",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        },
+        {
+          "id": 2,
+          "name": "user22",
+          "strength": 0,
+          "agility": 0,
+          "intelligence": 0,
+          "charisma": 0
+        }
+      ]
     }
-  ]
+  ],
+  "usersCount": {
+    "value": 10
+  }
 }

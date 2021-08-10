@@ -10,6 +10,6 @@ export const getPosts_ = createSelector(getPostsSelector, (posts) => {
 export const getSmth_ = (state) => {
     return state.profilePage.posts
 }
-export const getUserData = (state) => {
+export const getUserData_ = (state) => {
     return state.profilePage.posts
 }

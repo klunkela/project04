@@ -2,7 +2,6 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import {loginAPI} from "../../api/api";
 import {React, useEffect, useState} from "react";
-import s from './Register.module.css';
 import {regUser} from "../../redux/auth_reducer";
 import {useDispatch} from "react-redux";
 
